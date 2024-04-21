@@ -1,0 +1,14 @@
+[Unit]
+Description=Java Application Service
+After=cloud-init.service
+Wants=cloud-init.service
+
+[Service]
+ExecStart= /usr/bin/java -jar /home/csye6225/healthcheck-0.0.1-SNAPSHOT.jar --spring.config.name=application --spring.config.location=file:/tmp/
+Restart=always
+RestartSec=10
+User=csye6225
+WorkingDirectory=/home/csye6225
+
+[Install]
+WantedBy=multi-user.target
